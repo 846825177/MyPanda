@@ -27,8 +27,12 @@ public class ModelsImp implements Models {
         HttpRequest request = factorys.conCreate(context, RetrofitRequest.class);
         Type[] genericInterfaces = callback.getClass().getGenericInterfaces();
         Type[] actualTypeArguments = ((ParameterizedType) (genericInterfaces[0])).getActualTypeArguments();
-        Type type = actualTypeArguments[0];
-        request.doGet(context, url, type, callback);
+        Type type1 = actualTypeArguments[0];
+
+
+
+//       Type type = new TypeToken<TestEntity>(){}.getType();
+        request.doGet(context, url, type1, callback);
 
     }
 

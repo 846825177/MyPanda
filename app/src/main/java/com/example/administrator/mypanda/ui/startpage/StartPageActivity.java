@@ -17,38 +17,37 @@ import com.example.administrator.mypanda.ui.base.BaseActivity;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-
-public class StartPageActivity extends BaseActivity implements Iview<TestEntity>{
+public class StartPageActivity extends BaseActivity implements Iview<TestEntity> {
 
 
     @Inject
     Presenters presenters;
+
     /**
      * 在这里控制布局的显示
      */
+
     @Override
     public void setViewVisible() {
         setHeaderViewVisible(View.GONE);
         setNotScrollViewVisible(View.VISIBLE);
         setFooterViewVisible(View.GONE);
+
     }
+
 
     /**
      * 初始化布局和相关操作
      */
 
+
     @Override
     public void init() {
         setBodyView(R.layout.activity_start);
-        ButterKnife.inject(this);
-        DaggerUserComponent.builder().ipersenter(new Ipersenter(this)).build().inject(this);
-
         if (Tools.isNetworkAvailable(this)) {
             SharedPreferences preferences = getSharedPreferences("publicfile", this.MODE_PRIVATE);
             String version = preferences.getString("version", "");
-
-            presenters.requestNews(Concat.BASE_URL+Concat.TAB_URL);
+            presenters.requestNews(Concat.BASE_URL + Concat.TAB_URL);
         } else {
             Tools.showNetWork(this, "当前无网络连接", "好的", new DialogInterface.OnClickListener() {
                 @Override
@@ -60,12 +59,20 @@ public class StartPageActivity extends BaseActivity implements Iview<TestEntity>
     }
 
     @Override
+    public void setDagger() {
+        DaggerUserComponent.builder().ipersenter(new Ipersenter(this)).build().inject(this);
+    }
+
+    @Override
     public void success(TestEntity testEntity) {
-        Log.e("TAG",testEntity.toString());
+        Log.e("TAG", testEntity.toString());
     }
 
     @Override
     public void failure(Throwable e) {
 
     }
+
+
 }
+

@@ -13,6 +13,7 @@ import com.example.administrator.mypanda.R;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
+
 /**
  * @author 农民伯伯
  * @version 2017/11/1
@@ -72,6 +73,7 @@ public abstract class BaseActivity extends AbstractActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setDagger();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.base_activity);
         ButterKnife.inject(this);

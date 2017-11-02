@@ -17,7 +17,10 @@ public interface AbstractBase {
      * 初始化控件等相关操作
      */
     public abstract void init();
-
+    /**
+     * 设置初始化注入Dagger2
+     */
+    public abstract void setDagger();
 
     /**
      * showAlertDialog()  设置显示alertDialog
