@@ -1,6 +1,8 @@
-package com.example.administrator.mypanda.interfacs;
+package com.example.administrator.mypanda.mvp;
 
 import android.content.Context;
+
+import com.example.administrator.mypanda.interfacs.HttpCallback;
 
 import java.util.Map;
 

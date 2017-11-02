@@ -1,4 +1,4 @@
-package com.example.administrator.mypanda.interfacs;
+package com.example.administrator.mypanda.mvp;
 
 import android.content.Context;
 
@@ -6,10 +6,12 @@ import com.example.administrator.mypanda.http.factorys.HttpConCreate;
 import com.example.administrator.mypanda.http.factorys.HttpFactorys;
 import com.example.administrator.mypanda.http.products.HttpRequest;
 import com.example.administrator.mypanda.http.products.RetrofitRequest;
+import com.example.administrator.mypanda.interfacs.HttpCallback;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Map;
+
 
 /**
  * @author 农民伯伯
@@ -17,6 +19,8 @@ import java.util.Map;
  */
 
 public class ModelsImp implements Models {
+
+
     @Override
     public void getRequest(Context context, String url, HttpCallback callback) {
         HttpFactorys factorys = new HttpConCreate();

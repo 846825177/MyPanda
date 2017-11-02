@@ -2,21 +2,28 @@ package com.example.administrator.mypanda.ui.startpage;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 
 import com.example.administrator.mypanda.R;
+import com.example.administrator.mypanda.concat.Concat;
+import com.example.administrator.mypanda.entity.TestEntity;
+import com.example.administrator.mypanda.mvp.DaggerUserComponent;
+import com.example.administrator.mypanda.mvp.Ipersenter;
+import com.example.administrator.mypanda.mvp.Iview;
+import com.example.administrator.mypanda.mvp.Presenters;
 import com.example.administrator.mypanda.tools.Tools;
 import com.example.administrator.mypanda.ui.base.BaseActivity;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
-public class StartPageActivity extends BaseActivity {
+public class StartPageActivity extends BaseActivity implements Iview<TestEntity>{
 
-    @InjectView(R.id.mStartViewPager)
-    ViewPager mStartViewPager;
 
+    @Inject
+    Presenters presenters;
     /**
      * 在这里控制布局的显示
      */
@@ -35,16 +42,13 @@ public class StartPageActivity extends BaseActivity {
     public void init() {
         setBodyView(R.layout.activity_start);
         ButterKnife.inject(this);
+        DaggerUserComponent.builder().ipersenter(new Ipersenter(this)).build().inject(this);
 
         if (Tools.isNetworkAvailable(this)) {
             SharedPreferences preferences = getSharedPreferences("publicfile", this.MODE_PRIVATE);
             String version = preferences.getString("version", "");
-            if (version != null && !version.equals("")) {
 
-            } else {
-
-            }
-
+            presenters.requestNews(Concat.BASE_URL+Concat.TAB_URL);
         } else {
             Tools.showNetWork(this, "当前无网络连接", "好的", new DialogInterface.OnClickListener() {
                 @Override
@@ -55,4 +59,13 @@ public class StartPageActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void success(TestEntity testEntity) {
+        Log.e("TAG",testEntity.toString());
+    }
+
+    @Override
+    public void failure(Throwable e) {
+
+    }
 }
