@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/mHeaderView"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/mFooterView"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <RelativeLayout
+        android:id="@+id/mBodyView"
+        android:layout_below="@id/mHeaderView"
+        android:layout_above="@id/mFooterView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- 显示非滚动布局-->
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/mNotScrollBody"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <!-- 显示滚动布局-->
+        <ScrollView
+            android:visibility="gone"
+            android:id="@+id/mScrollBody"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/mScrollView"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </ScrollView>
+        <!--显示下拉刷新布局-->
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:visibility="gone"
+            android:id="@+id/mRefreshBody"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/mRefreshView"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+        <!-- 显示加载异常布局-->
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/mErrorBody"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+</RelativeLayout>
