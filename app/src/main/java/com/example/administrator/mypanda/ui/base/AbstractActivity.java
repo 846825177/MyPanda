@@ -10,6 +10,7 @@ import com.example.administrator.mypanda.tools.Tools;
  */
 
 public abstract class AbstractActivity extends AppCompatActivity implements AbstractBase {
+
     /**
      * 布局默认全部都不使用
      * <p>
@@ -26,7 +27,6 @@ public abstract class AbstractActivity extends AppCompatActivity implements Abst
     public boolean isShowScrollView = false;
     public boolean isShowRefreshView = false;
     public boolean isShowErrorView = false;
-
     /**
      * 显示AlertDialog 的方法
      * @param title

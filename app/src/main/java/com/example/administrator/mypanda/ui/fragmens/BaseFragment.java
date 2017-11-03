@@ -1,7 +1,10 @@
-package com.example.administrator.mypanda.ui.base;
+package com.example.administrator.mypanda.ui.fragmens;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -9,14 +12,30 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.example.administrator.mypanda.R;
-
+import com.example.administrator.mypanda.ui.base.AbstractBase;
 
 /**
  * @author 农民伯伯
- * @version 2017/11/1
+ * @version 2017/11/3
  */
 
-public abstract class BaseActivity extends AbstractActivity {
+public abstract class BaseFragment extends Fragment implements AbstractBase {
+    /**
+     * 布局默认全部都不使用
+     * <p>
+     * isShowHeaderView = false;            控制是否使用头布局
+     * isShowFooterView = false;            控制是否使用尾布局
+     * isShowNotScrollViewVisible = false;  控制是否使用不滑动的主体布局
+     * isShowScrollView = false;            控制是否使用滑动的主体布局
+     * isShowRefreshView = false;           控制是否使用刷新的主体布局
+     * isShowErrorView = false;             控制是否使用错误布局
+     */
+    public boolean isShowHeaderView = false;
+    public boolean isShowFooterView = false;
+    public boolean isShowNotScrollView = false;
+    public boolean isShowScrollView = false;
+    public boolean isShowRefreshView = false;
+    public boolean isShowErrorView = false;
 
 
     private LinearLayout mHeaderView;
@@ -34,13 +53,15 @@ public abstract class BaseActivity extends AbstractActivity {
      *
      * @param savedInstanceState
      */
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
         setDagger();
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.base_activity);
+        View view = inflater.inflate(R.layout.base_activity, container, false);
         //初始化总布局的控件
-        initView();
+        initView(view);
         //设置布局显示
         setViewVisible();
         init();
@@ -56,7 +77,7 @@ public abstract class BaseActivity extends AbstractActivity {
          * 检查尾部布局
          */
         checkFooterLayout();
-
+        return view;
     }
 
     /**
@@ -67,7 +88,7 @@ public abstract class BaseActivity extends AbstractActivity {
     @Override
     public void setHeaderView(int id) {
         //通过 View.inflate() 方法，查找出相对应的View
-        View headerView = View.inflate(this, id, null);
+        View headerView = View.inflate(getActivity(), id, null);
         // 因为加入Base后 宽高属性失效，所以在此设置宽高
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 70);
         //把宽高属性设置给对应的View
@@ -84,7 +105,7 @@ public abstract class BaseActivity extends AbstractActivity {
     @Override
     public void setFooterView(int id) {
         //通过 View.inflate() 方法，查找出相对应的View
-        View footerView = View.inflate(this, id, null);
+        View footerView = View.inflate(getActivity(), id, null);
         // 因为加入Base后 宽高属性失效，所以在此设置宽高
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 70);
         //把宽高属性设置给对应的View
@@ -101,7 +122,7 @@ public abstract class BaseActivity extends AbstractActivity {
     @Override
     public void setBodyView(int id) {
         //通过 View.inflate() 方法，查找出相对应的View
-        View body = View.inflate(this, id, null);
+        View body = View.inflate(getActivity(), id, null);
         // 因为加入Base后 宽高属性失效，所以在此设置宽高
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         //把宽高属性设置给对应的View
@@ -238,15 +259,17 @@ public abstract class BaseActivity extends AbstractActivity {
     }
 
 
-    private void initView() {
-        mHeaderView = (LinearLayout) findViewById(R.id.mHeaderView);
-        mFooterView = (LinearLayout) findViewById(R.id.mFooterView);
-        mNotScrollBody = (LinearLayout) findViewById(R.id.mNotScrollBody);
-        mScrollView = (LinearLayout) findViewById(R.id.mScrollView);
-        mScrollBody = (ScrollView) findViewById(R.id.mScrollBody);
-        mRefreshView = (LinearLayout) findViewById(R.id.mRefreshView);
-        mRefreshBody = (SwipeRefreshLayout) findViewById(R.id.mRefreshBody);
-        mErrorBody = (LinearLayout) findViewById(R.id.mErrorBody);
-        mBodyView = (RelativeLayout) findViewById(R.id.mBodyView);
+    private void initView(View view) {
+        mHeaderView = (LinearLayout) view.findViewById(R.id.mHeaderView);
+        mFooterView = (LinearLayout) view.findViewById(R.id.mFooterView);
+        mNotScrollBody = (LinearLayout) view.findViewById(R.id.mNotScrollBody);
+        mScrollView = (LinearLayout) view.findViewById(R.id.mScrollView);
+        mScrollBody = (ScrollView) view.findViewById(R.id.mScrollBody);
+        mRefreshView = (LinearLayout) view.findViewById(R.id.mRefreshView);
+        mRefreshBody = (SwipeRefreshLayout) view.findViewById(R.id.mRefreshBody);
+        mErrorBody = (LinearLayout) view.findViewById(R.id.mErrorBody);
+        mBodyView = (RelativeLayout) view.findViewById(R.id.mBodyView);
     }
 }
+
+

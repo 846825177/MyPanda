@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">MyPanda</string>
+    <string name="app_name">熊猫频道</string>
+    <string name="title_activity_main1">MainActivity1</string>
 </resources>

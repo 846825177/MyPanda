@@ -5,7 +5,7 @@ package com.example.administrator.mypanda.ui.base;
  * @version 2017/11/2
  */
 
-public interface AbstractBase {
+public interface  AbstractBase {
 
 
     /**
@@ -17,6 +17,7 @@ public interface AbstractBase {
      * 初始化控件等相关操作
      */
     public abstract void init();
+
     /**
      * 设置初始化注入Dagger2
      */
@@ -29,9 +30,9 @@ public interface AbstractBase {
      * @param message cancleAlertDialog() 取消显示alertDialog
      */
 
-    public void showAlertDialog(String title, String message);
+    public abstract void showAlertDialog(String title, String message);
 
-    public void cancleAlertDialog();
+    public abstract void cancleAlertDialog();
 
     /**
      * setHeaderView(int id); 设置头布局 传入控件id
