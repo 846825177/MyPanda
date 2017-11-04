@@ -36,6 +36,7 @@
             android:src="@mipmap/hudong_sign" />
 
         <TextView
+            android:textColor="#fff"
             android:textSize="23sp"
             android:id="@+id/mHomeTitle"
             android:layout_width="wrap_content"

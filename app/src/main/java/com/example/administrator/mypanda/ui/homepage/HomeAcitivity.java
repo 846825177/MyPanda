@@ -1,5 +1,6 @@
 package com.example.administrator.mypanda.ui.homepage;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.mypanda.R;
+import com.example.administrator.mypanda.ui.HudongActivity;
 import com.example.administrator.mypanda.ui.adapters.HomeFVAdapter;
 import com.example.administrator.mypanda.ui.base.BaseActivity;
 import com.example.administrator.mypanda.ui.fragmens.ChinaLiveFragment;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
  * @version 2017/11/2
  */
 
-public class HomeAcitivity extends BaseActivity implements ViewPager.OnPageChangeListener {
+public class HomeAcitivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
     private NoScrollViewPager mHomeViewPager;
     private TabLayout mHomeTabLayou;
@@ -52,6 +54,7 @@ public class HomeAcitivity extends BaseActivity implements ViewPager.OnPageChang
         mHudong = (ImageView) findViewById(R.id.mHudong);
         mHomeTitle = (TextView) findViewById(R.id.mHomeTitle);
         mLog = (ImageView) findViewById(R.id.mLog);
+        mHudong.setOnClickListener(this);
         //首页
         HomeFragment homeFragment = new HomeFragment();
         //熊猫观察
@@ -118,5 +121,16 @@ public class HomeAcitivity extends BaseActivity implements ViewPager.OnPageChang
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.mHudong:
+                startActivity(new Intent(this, HudongActivity.class));
+                break;
+
+
+        }
     }
 }
