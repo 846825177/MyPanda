@@ -23,6 +23,7 @@
         <activity android:name=".ui.startpage.WelComeActivity" />
         <activity android:name=".ui.homepage.HomeAcitivity" />
         <activity android:name=".ui.HudongActivity"></activity>
+        <activity android:name=".ui.WebActivity" />
     </application>
 
 </manifest>

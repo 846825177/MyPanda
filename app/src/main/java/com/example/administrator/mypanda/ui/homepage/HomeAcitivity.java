@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.mypanda.R;
+import com.example.administrator.mypanda.mvp.Presenters;
 import com.example.administrator.mypanda.ui.HudongActivity;
 import com.example.administrator.mypanda.ui.adapters.HomeFVAdapter;
 import com.example.administrator.mypanda.ui.base.BaseActivity;
@@ -20,6 +21,8 @@ import com.example.administrator.mypanda.ui.fragmens.ObservationFragment;
 import com.example.administrator.mypanda.views.NoScrollViewPager;
 
 import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 /**
  * @author 农民伯伯
@@ -95,7 +98,6 @@ public class HomeAcitivity extends BaseActivity implements ViewPager.OnPageChang
 
     @Override
     public void setDagger() {
-
     }
 
     @Override

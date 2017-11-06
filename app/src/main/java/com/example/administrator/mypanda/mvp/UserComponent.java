@@ -1,5 +1,6 @@
 package com.example.administrator.mypanda.mvp;
 
+import com.example.administrator.mypanda.ui.HudongActivity;
 import com.example.administrator.mypanda.ui.startpage.StartPageActivity;
 import com.example.administrator.mypanda.ui.startpage.WelComeActivity;
 
@@ -14,4 +15,5 @@ public interface UserComponent {
     //StartPageActivity，不能写Activity，要不然会出现空指针。
     void inject(StartPageActivity activity);
     void inject(WelComeActivity activity);
+    void inject(HudongActivity activity);
 }

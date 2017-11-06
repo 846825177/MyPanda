@@ -10,20 +10,27 @@
         android:background="#1F539E">
 
         <TextView
-            android:id="@+id/mHuDong_Title"
+            android:id="@+id/mWeb_Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
-            android:text="原创·互动"
+            android:text="互动"
             android:textColor="#fff"
             android:textSize="23sp" />
 
         <ImageView
-            android:id="@+id/mHuDong_Return"
+            android:id="@+id/mWeb_Return"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:background="@mipmap/ic_chevron_left_white_36dp" />
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/mShare"
+            android:background="@mipmap/play_fullsrcee_share"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
     </RelativeLayout>
 </LinearLayout>

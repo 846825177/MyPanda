@@ -45,7 +45,7 @@ public class RetrofitRequest<T> implements HttpRequest<T> {
                         try {
                             String string = responseBody.string();
                             Log.e("TAG", string);
-                            //TODO 注意这个地方：
+
                             Gson gson = new Gson();
                             T t = gson.fromJson(string, type);
                             callback.success(t);
