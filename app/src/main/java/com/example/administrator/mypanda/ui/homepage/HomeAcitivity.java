@@ -9,6 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.mypanda.R;
+import com.example.administrator.mypanda.entity.HomeBean;
+import com.example.administrator.mypanda.mvp.DaggerUserComponent;
+import com.example.administrator.mypanda.mvp.Ipersenter;
+import com.example.administrator.mypanda.mvp.Iview;
 import com.example.administrator.mypanda.mvp.Presenters;
 import com.example.administrator.mypanda.ui.HudongActivity;
 import com.example.administrator.mypanda.ui.adapters.HomeFVAdapter;
@@ -29,7 +33,7 @@ import javax.inject.Inject;
  * @version 2017/11/2
  */
 
-public class HomeAcitivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
+public class HomeAcitivity extends BaseActivity implements Iview<HomeBean>,ViewPager.OnPageChangeListener, View.OnClickListener {
 
     private NoScrollViewPager mHomeViewPager;
     private TabLayout mHomeTabLayou;
@@ -37,8 +41,10 @@ public class HomeAcitivity extends BaseActivity implements ViewPager.OnPageChang
     private ImageView mPerson_sign;
     private ImageView mHudong;
     ArrayList<String> mTitle = new ArrayList<>();
+    ArrayList<Fragment> mList = new ArrayList<>();
     private ImageView mLog;
-
+    @Inject
+    Presenters presenters;
     @Override
     public void setViewVisible() {
         setHeaderViewVisible(View.VISIBLE);
@@ -71,7 +77,8 @@ public class HomeAcitivity extends BaseActivity implements ViewPager.OnPageChang
         //直播中国
         ChinaLiveFragment chinaLiveFragment = new ChinaLiveFragment();
 
-        ArrayList<Fragment> mList = new ArrayList<>();
+        presenters.requestNews("http://www.ipanda.com/kehuduan/PAGE1450172284887217/index.json");
+
         mList.add(homeFragment);
         mList.add(observationFragment);
         mList.add(cultureFragment);
@@ -98,6 +105,7 @@ public class HomeAcitivity extends BaseActivity implements ViewPager.OnPageChang
 
     @Override
     public void setDagger() {
+        DaggerUserComponent.builder().ipersenter(new Ipersenter(this)).build().inject(this);
     }
 
     @Override
@@ -134,5 +142,15 @@ public class HomeAcitivity extends BaseActivity implements ViewPager.OnPageChang
 
 
         }
+    }
+
+    @Override
+    public void success(HomeBean homeBean) {
+//        List<HomeBean.TabBean> tab = homeBean.getTab();
+    }
+
+    @Override
+    public void failure(Throwable e) {
+
     }
 }
