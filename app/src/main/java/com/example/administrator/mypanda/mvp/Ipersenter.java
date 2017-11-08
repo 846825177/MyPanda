@@ -1,5 +1,7 @@
 package com.example.administrator.mypanda.mvp;
 
+import android.content.Context;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -12,12 +14,14 @@ import dagger.Provides;
 @Module
 public class Ipersenter {
     private Iview iview;
-    public Ipersenter(Iview iview) {
+    private Context context;
+    public Ipersenter(Context context, Iview iview) {
         this.iview = iview;
+        this.context=context;
     }
 
     @Provides
     Presenters Ipersenter() {
-        return new Presenters(iview);
+        return new Presenters(context,iview);
     }
 }

@@ -11,14 +11,16 @@ public class Presenters {
     private static final String TAG = "Presenters";
     private Iview iview;
     private Models models;
+    private Context context;
 
-    public Presenters(Iview iview) {
+    public Presenters(Context context, Iview iview) {
         this.iview = iview;
         models = new ModelsImp();
+        this.context=context;
     }
 
     public void requestNews(String url) {
-        models.getRequest((Context) iview, url, iview);
+        models.getRequest(context, url, iview);
     }
 
 

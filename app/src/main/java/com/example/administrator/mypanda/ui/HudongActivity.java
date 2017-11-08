@@ -53,7 +53,7 @@ public class HudongActivity extends BaseActivity implements Iview<HudongEntity>,
 
     @Override
     public void setDagger() {
-        DaggerUserComponent.builder().ipersenter(new Ipersenter(HudongActivity.this)).build().inject(HudongActivity.this);
+        DaggerUserComponent.builder().ipersenter(new Ipersenter(HudongActivity.this,HudongActivity.this)).build().inject(HudongActivity.this);
     }
 
     @Override

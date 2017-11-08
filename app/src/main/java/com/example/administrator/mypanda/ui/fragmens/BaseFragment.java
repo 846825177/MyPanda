@@ -47,6 +47,7 @@ public abstract class BaseFragment extends Fragment implements AbstractBase {
     private SwipeRefreshLayout mRefreshBody;
     private LinearLayout mErrorBody;
     private RelativeLayout mBodyView;
+    private View view;
 
     /**
      * 设置默认布局
@@ -59,7 +60,7 @@ public abstract class BaseFragment extends Fragment implements AbstractBase {
 
 
         setDagger();
-        View view = inflater.inflate(R.layout.base_activity, container, false);
+        view = inflater.inflate(R.layout.base_activity, container, false);
         //初始化总布局的控件
         initView(view);
         //设置布局显示
@@ -79,8 +80,13 @@ public abstract class BaseFragment extends Fragment implements AbstractBase {
         checkFooterLayout();
         return view;
     }
+    public View findViewById(int id){
+        View view1 = view.findViewById(id);
+        return view1;
+    }
 
-    /**
+
+        /**
      * 设置头布局 判断如果显示就添加View
      *
      * @param id

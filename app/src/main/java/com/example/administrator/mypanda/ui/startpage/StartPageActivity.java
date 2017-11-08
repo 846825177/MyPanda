@@ -86,7 +86,7 @@ public class StartPageActivity extends BaseActivity implements Iview<TestEntity>
 
     @Override
     public void setDagger() {
-        DaggerUserComponent.builder().ipersenter(new Ipersenter(this)).build().inject(this);
+        DaggerUserComponent.builder().ipersenter(new Ipersenter(this,this)).build().inject(this);
     }
 
     @Override
