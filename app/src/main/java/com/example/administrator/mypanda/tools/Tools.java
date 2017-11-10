@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.view.WindowManager;
 
 /**
  * @author 农民伯伯
@@ -67,5 +68,16 @@ public class Tools {
                 .setPositiveButton(posiTiveText, posiTivelistener)
                 .show();
 
+    }
+
+    public static int queryWidth(Context context){
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        int width = wm.getDefaultDisplay().getWidth();//屏幕宽度
+        return width;
+    }
+    public static int queryHeight(Context context){
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        int height = wm.getDefaultDisplay().getHeight();//屏幕高度
+        return height;
     }
 }

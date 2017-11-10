@@ -1,6 +1,9 @@
 package com.example.administrator.mypanda.mvp;
 
 import com.example.administrator.mypanda.ui.HudongActivity;
+import com.example.administrator.mypanda.ui.adapters.HomeRecyclerAdapter;
+import com.example.administrator.mypanda.ui.adapters.ItemcAdapter;
+import com.example.administrator.mypanda.ui.adapters.Itemhadapter;
 import com.example.administrator.mypanda.ui.fragmens.HomeFragment;
 import com.example.administrator.mypanda.ui.homepage.HomeAcitivity;
 import com.example.administrator.mypanda.ui.startpage.StartPageActivity;
@@ -20,4 +23,10 @@ public interface UserComponent {
     void inject(HudongActivity activity);
     void inject(HomeAcitivity activity);
     void inject(HomeFragment homeFragment);
+
+    void inject(ItemcAdapter itemcAdapter);
+
+    void inject(Itemhadapter itemhadapter);
+
+    void inject(HomeRecyclerAdapter homeRecyclerAdapter);
 }
