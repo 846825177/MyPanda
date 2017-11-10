@@ -4,7 +4,9 @@ import com.example.administrator.mypanda.ui.HudongActivity;
 import com.example.administrator.mypanda.ui.adapters.HomeRecyclerAdapter;
 import com.example.administrator.mypanda.ui.adapters.ItemcAdapter;
 import com.example.administrator.mypanda.ui.adapters.Itemhadapter;
+import com.example.administrator.mypanda.ui.fragmens.CultureFragment;
 import com.example.administrator.mypanda.ui.fragmens.HomeFragment;
+import com.example.administrator.mypanda.ui.fragmens.ObservationFragment;
 import com.example.administrator.mypanda.ui.homepage.HomeAcitivity;
 import com.example.administrator.mypanda.ui.startpage.StartPageActivity;
 import com.example.administrator.mypanda.ui.startpage.WelComeActivity;
@@ -29,4 +31,8 @@ public interface UserComponent {
     void inject(Itemhadapter itemhadapter);
 
     void inject(HomeRecyclerAdapter homeRecyclerAdapter);
+
+    void inject(ObservationFragment observationFragment);
+
+    void inject(CultureFragment cultureFragment);
 }
