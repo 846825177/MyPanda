@@ -11,6 +11,7 @@ import com.example.administrator.mypanda.mvp.DaggerUserComponent;
 import com.example.administrator.mypanda.mvp.Ipersenter;
 import com.example.administrator.mypanda.mvp.Iview;
 import com.example.administrator.mypanda.mvp.Presenters;
+import com.example.administrator.mypanda.tools.SpacesItemDecoration;
 import com.example.administrator.mypanda.ui.adapters.HomeRecyclerAdapter;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -41,6 +42,7 @@ public class HomeFragment extends BaseFragment implements Iview<HomeFragmentEnti
     public void init() {
         mXrecyclerview = (XRecyclerView) findViewById(R.id.mXrecyclerview);
         mXrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mXrecyclerview.addItemDecoration(new SpacesItemDecoration(10));
         inflate = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_home_recyclerview_header, null);
         presenters.requestNews("http://www.ipanda.com/kehuduan/PAGE14501749764071042/index.json");
 
@@ -81,14 +83,14 @@ public class HomeFragment extends BaseFragment implements Iview<HomeFragmentEnti
         //长城直播
         String title7 = homeFragmentEntity.getData().getWalllive().getTitle();
         mType.add("轮播图");
-        mType.add(title1);
-        mType.add(title5);
-        mType.add(title6);
-        mType.add(title7);
-        mType.add(title3);
-        mType.add(title4);
-        mType.add(title2);
-        mType.add(title41);
+        mType.add("精彩推荐");
+        mType.add("熊猫观察");
+        mType.add("熊猫直播");
+        mType.add("长城直播");
+        mType.add("直播中国");
+        mType.add("特别策划");
+        mType.add("央视名栏");
+        mType.add("光影中国");
         Log.e("TAG",mType.toString());
         homeRecyclerAdapter = new HomeRecyclerAdapter(getActivity(),homeFragmentEntity,mType);
         mXrecyclerview.setAdapter(homeRecyclerAdapter);

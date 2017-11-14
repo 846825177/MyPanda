@@ -1,6 +1,7 @@
 package com.example.administrator.mypanda.ui.homepage;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -54,7 +55,16 @@ public class HomeAcitivity extends BaseActivity implements Iview<HomeBean>,ViewP
         setBodyView(R.layout.activity_home_body);
         setFooterView(R.layout.activity_home_footer);
     }
-
+    @Override
+    protected void onResume() {
+        /**
+         * 设置为竖屏
+         */
+        if(getRequestedOrientation()!= ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+        super.onResume();
+    }
     @Override
     public void init() {
         mHomeTabLayou = (TabLayout) findViewById(R.id.mHomeTabLayou);

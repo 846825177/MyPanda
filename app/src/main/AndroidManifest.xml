@@ -24,6 +24,9 @@
         <activity android:name=".ui.homepage.HomeAcitivity" />
         <activity android:name=".ui.HudongActivity"></activity>
         <activity android:name=".ui.WebActivity" />
+        <activity android:name=".ui.PlayAcitivity"
+            android:configChanges="screenSize|keyboardHidden|orientation"
+            />
     </application>
 
 </manifest>

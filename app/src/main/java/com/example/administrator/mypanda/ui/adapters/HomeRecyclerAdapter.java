@@ -1,6 +1,7 @@
 package com.example.administrator.mypanda.ui.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -22,8 +23,10 @@ import com.example.administrator.mypanda.mvp.Ipersenter;
 import com.example.administrator.mypanda.mvp.Iview;
 import com.example.administrator.mypanda.mvp.Presenters;
 import com.example.administrator.mypanda.tools.GlideImageLoader;
+import com.example.administrator.mypanda.ui.PlayAcitivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
+import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +91,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             return ITEM_I;
 
         }
-        return 0;
+        return ITEM_I;
     }
 
     @Override
@@ -142,7 +145,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         switch (itemViewType) {
             case ITEM_A:
                 ViewHolderA holder1 = (ViewHolderA) holder;
-                List<HomeFragmentEntity.DataBean.BigImgBean> bigImg = entity.getData().getBigImg();
+                final List<HomeFragmentEntity.DataBean.BigImgBean> bigImg = entity.getData().getBigImg();
                 ArrayList<String> datas = new ArrayList<>();
                 ArrayList<String> titles = new ArrayList<>();
                 for (int i = 0; i < bigImg.size(); i++) {
@@ -155,6 +158,16 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 holder1.mXBanner.setBannerTitles(titles);
                 holder1.mXBanner.setIndicatorGravity(BannerConfig.RIGHT);
                 holder1.mXBanner.start();
+                holder1.mXBanner.setOnBannerListener(new OnBannerListener() {
+                    @Override
+                    public void OnBannerClick(int position) {
+                       if(!bigImg.get(position).getPid().equals("")){
+                           Intent intent = new Intent(context, PlayAcitivity.class);
+                           intent.putExtra("pid",bigImg.get(position).getPid());
+                           context.startActivity(intent);
+                       }
+                    }
+                });
                 break;
             case ITEM_B:
                 ViewHolderB holder2 = (ViewHolderB) holder;
@@ -198,7 +211,6 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 Glide.with(context).load(entity.getData().getPandalive().getList().get(3).getImage()).into(holder4.itemd_image_d);
                 Glide.with(context).load(entity.getData().getPandalive().getList().get(4).getImage()).into(holder4.itemd_image_e);
                 Glide.with(context).load(entity.getData().getPandalive().getList().get(5).getImage()).into(holder4.itemd_image_f);
-
                 break;
             case ITEM_E:
                 ViewHolderE holder5 = (ViewHolderE) holder;
