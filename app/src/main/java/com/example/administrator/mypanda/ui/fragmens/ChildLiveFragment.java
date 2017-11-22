@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.example.administrator.mypanda.R;
 import com.example.administrator.mypanda.entity.ChildLiveEntity;
@@ -18,6 +17,8 @@ import com.example.administrator.mypanda.mvp.Iview;
 import com.example.administrator.mypanda.mvp.Presenters;
 
 import javax.inject.Inject;
+
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 /**
  * @author 农民伯伯
@@ -30,7 +31,7 @@ public class ChildLiveFragment extends BaseFragment implements Iview<ChildLiveEn
 
     private int i=1;
 
-    private VideoView videoView;
+    public static JCVideoPlayer videoView;
     private TextView p_zhibo_text;
     private ImageView p_zhibo_image;
     private FrameLayout p_zhibo_frame;
@@ -55,7 +56,7 @@ public class ChildLiveFragment extends BaseFragment implements Iview<ChildLiveEn
     @Override
     public void init() {
         //videoview
-        videoView = (VideoView) findViewById(R.id.p_zhibovideoview);
+        videoView = (JCVideoPlayer) findViewById(R.id.p_zhibovideoview);
         //更换的text标题
         p_zhibo_text = (TextView) findViewById(R.id.p_zhibo_text);
         //上下图标的切换
