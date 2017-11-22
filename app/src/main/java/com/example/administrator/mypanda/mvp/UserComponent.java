@@ -5,8 +5,12 @@ import com.example.administrator.mypanda.ui.PlayAcitivity;
 import com.example.administrator.mypanda.ui.adapters.HomeRecyclerAdapter;
 import com.example.administrator.mypanda.ui.adapters.ItemcAdapter;
 import com.example.administrator.mypanda.ui.adapters.Itemhadapter;
+import com.example.administrator.mypanda.ui.fragmens.ChildLiveFragment;
+import com.example.administrator.mypanda.ui.fragmens.ChiledFragment;
 import com.example.administrator.mypanda.ui.fragmens.CultureFragment;
+import com.example.administrator.mypanda.ui.fragmens.DuoZhiBoFragment;
 import com.example.administrator.mypanda.ui.fragmens.HomeFragment;
+import com.example.administrator.mypanda.ui.fragmens.LiveFragment;
 import com.example.administrator.mypanda.ui.fragmens.ObservationFragment;
 import com.example.administrator.mypanda.ui.homepage.HomeAcitivity;
 import com.example.administrator.mypanda.ui.startpage.StartPageActivity;
@@ -33,4 +37,13 @@ public interface UserComponent {
     void inject(CultureFragment cultureFragment);
 
     void inject(PlayAcitivity playAcitivity);
+
+    void inject(LiveFragment liveFragment);
+
+    void inject(ChiledFragment chiledFragment);
+
+    void inject(DuoZhiBoFragment duoZhiBoFragment);
+
+    void inject(ChildLiveFragment childLiveFragment);
+
 }

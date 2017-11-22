@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.administrator.mypanda.R;
-import com.example.administrator.mypanda.entity.ClultureEntity;
+import com.example.administrator.mypanda.entity.ChiledEntity;
 import com.example.administrator.mypanda.tools.Tools;
 
 import java.util.List;
@@ -18,14 +18,13 @@ import java.util.List;
  *@author 农民伯伯
         * @version 2017/11/3
         */
-public class CultureAdapter extends BaseAdapter {
+public class ChiledAdapter extends BaseAdapter {
     Context context;
 
-    private List<ClultureEntity.ListBean> list;
+    private List<ChiledEntity.VideoBean> list;
 
-    private ViewHolder holder;
 
-    public CultureAdapter(Context context, List<ClultureEntity.ListBean> list) {
+    public ChiledAdapter(Context context, List<ChiledEntity.VideoBean> list) {
         this.context = context;
         this.list = list;
     }
@@ -50,6 +49,7 @@ public class CultureAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
+        ViewHolder holder;
 
         if (view == null) {
 
@@ -65,14 +65,13 @@ public class CultureAdapter extends BaseAdapter {
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Tools.jump(context,list.get(i).getId(),list.get(i).getUrl());
+                Tools.jump(context,list.get(i).getVid(),list.get(i).getUrl());
             }
         });
-
-        Glide.with(context).load(list.get(i).getImage()).into(holder.iv_watch_img);
-        holder.tv_watch_title.setText(list.get(i).getTitle());
-        holder.tv_watch_cont.setText("2017-11-05 09:40");
-        holder.play_time_on.setText(list.get(i).getVideoLength());
+        Glide.with(context).load(list.get(i).getImg()).into(holder.iv_watch_img);
+        holder.tv_watch_title.setText(list.get(i).getT());
+        holder.tv_watch_cont.setText(list.get(i).getPtime());
+        holder.play_time_on.setText(list.get(i).getLen());
 
 
         return view;

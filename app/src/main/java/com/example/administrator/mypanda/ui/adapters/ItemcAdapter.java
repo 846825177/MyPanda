@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.administrator.mypanda.R;
@@ -18,6 +17,7 @@ import com.example.administrator.mypanda.mvp.DaggerUserComponent;
 import com.example.administrator.mypanda.mvp.Ipersenter;
 import com.example.administrator.mypanda.mvp.Iview;
 import com.example.administrator.mypanda.mvp.Presenters;
+import com.example.administrator.mypanda.tools.Tools;
 
 import java.util.ArrayList;
 
@@ -70,13 +70,14 @@ public class ItemcAdapter extends BaseAdapter implements Iview<ItemcEntity> {
         holder.mTopclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, mList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                Tools.jump(context,mList.get(position).getPid(),mList.get(position).getUrl());
             }
         });
         holder.mbtmclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, mList.get(position+1).getTitle(), Toast.LENGTH_SHORT).show();
+                Tools.jump(context,mList.get(position+1).getPid(),mList.get(position).getUrl());
+
             }
         });
         Glide.with(context).load(mList.get(position).getImage()).into(holder.itemc_item_leftimg);

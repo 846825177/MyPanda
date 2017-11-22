@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +22,7 @@ import com.example.administrator.mypanda.mvp.Ipersenter;
 import com.example.administrator.mypanda.mvp.Iview;
 import com.example.administrator.mypanda.mvp.Presenters;
 import com.example.administrator.mypanda.tools.GlideImageLoader;
+import com.example.administrator.mypanda.tools.Tools;
 import com.example.administrator.mypanda.ui.PlayAcitivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -188,8 +188,12 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 holder3.c_title.setText(entity.getData().getPandaeye().getTitle());
                 holder3.c_brief_top.setText(entity.getData().getPandaeye().getItems().get(0).getBrief());
                 holder3.c_title_top.setText(entity.getData().getPandaeye().getItems().get(0).getTitle());
-                Log.e("TAG", entity.getData().getPandaeye().getItems().get(0).getBrief());
-                Log.e("TAG", entity.getData().getPandaeye().getItems().get(1).getBrief());
+                holder3.c_title.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Tools.jump(context,entity.getData().getPandaeye().getItems().get(0).getPid(),entity.getData().getPandaeye().getItems().get(0).getUrl());
+                    }
+                });
                 holder3.c_brief_btm.setText(entity.getData().getPandaeye().getItems().get(1).getBrief());
                 holder3.c_title_btm.setText(entity.getData().getPandaeye().getItems().get(1).getTitle());
                 String pandaeyelist = entity.getData().getPandaeye().getPandaeyelist();
@@ -335,6 +339,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             this.c_brief_btm = (TextView) rootView.findViewById(R.id.c_brief_btm);
             this.c_title_btm = (TextView) rootView.findViewById(R.id.c_title_btm);
             this.c_ListView = (ListView) rootView.findViewById(R.id.c_ListView);
+
         }
     }
 

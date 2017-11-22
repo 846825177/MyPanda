@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <VideoView
+        android:id="@+id/p_zhibovideoview"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+    <TextView
+        android:id="@+id/p_zhibo_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="简介"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_centerInParent="true"
+        android:id="@+id/p_zhibo_image"
+        android:background="@mipmap/xia"
+        android:layout_width="16dp"
+        android:layout_height="16dp" />
+</RelativeLayout>
+
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:id="@+id/p_zhibo_content"
+        android:layout_height="60dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:text="多视角直播"
+            android:id="@+id/duo_zhibo"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:background="#fff"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="边看边聊"
+            android:id="@+id/kan_liao"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+<FrameLayout
+    android:id="@+id/p_zhibo_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></FrameLayout>
+
+
+
+
+
+
+
+
+
+</LinearLayout>

@@ -4,9 +4,13 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import com.example.administrator.mypanda.ui.PlayAcitivity;
 
 /**
  * @author 农民伯伯
@@ -79,5 +83,17 @@ public class Tools {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         int height = wm.getDefaultDisplay().getHeight();//屏幕高度
         return height;
+    }
+    public static void  jump(Context context,String pid ,String html){
+        if(!pid.equals("")){
+            Intent intent = new Intent(context, PlayAcitivity.class);
+            intent.putExtra("pid",pid);
+            context.startActivity(intent);
+        }else {
+            Toast.makeText(context, "html", Toast.LENGTH_SHORT).show();
+        }
+
+
+
     }
 }

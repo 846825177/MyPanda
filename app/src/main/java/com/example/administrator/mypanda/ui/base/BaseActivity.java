@@ -69,7 +69,7 @@ public abstract class BaseActivity extends AbstractActivity {
         //通过 View.inflate() 方法，查找出相对应的View
         View headerView = View.inflate(this, id, null);
         // 因为加入Base后 宽高属性失效，所以在此设置宽高
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 70);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         //把宽高属性设置给对应的View
         headerView.setLayoutParams(params);
         if (isShowHeaderView)
@@ -86,7 +86,7 @@ public abstract class BaseActivity extends AbstractActivity {
         //通过 View.inflate() 方法，查找出相对应的View
         View footerView = View.inflate(this, id, null);
         // 因为加入Base后 宽高属性失效，所以在此设置宽高
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 70);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         //把宽高属性设置给对应的View
         footerView.setLayoutParams(params);
         if (isShowFooterView)

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.example.administrator.mypanda.R;
@@ -36,6 +37,7 @@ public class StartPageActivity extends BaseActivity implements Iview<TestEntity>
 
     @Override
     public void setViewVisible() {
+
         setHeaderViewVisible(View.GONE);
         setNotScrollViewVisible(View.VISIBLE);
         setFooterViewVisible(View.GONE);
@@ -87,6 +89,9 @@ public class StartPageActivity extends BaseActivity implements Iview<TestEntity>
     @Override
     public void setDagger() {
         DaggerUserComponent.builder().ipersenter(new Ipersenter(this,this)).build().inject(this);
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     @Override

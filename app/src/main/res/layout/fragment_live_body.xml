@@ -3,9 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LiveFragment" />
+    <android.support.design.widget.TabLayout
+        android:id="@+id/m_live_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.design.widget.TabLayout>
+    <com.example.administrator.mypanda.views.NoScrollViewPager
+        android:id="@+id/m_live_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.example.administrator.mypanda.views.NoScrollViewPager>
 </LinearLayout>

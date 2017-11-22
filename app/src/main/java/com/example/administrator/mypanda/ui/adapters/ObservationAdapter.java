@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.administrator.mypanda.R;
 import com.example.administrator.mypanda.entity.ObservationBentity;
+import com.example.administrator.mypanda.tools.Tools;
 
 import java.util.List;
 
@@ -22,7 +23,6 @@ public class ObservationAdapter extends BaseAdapter {
 
     private List<ObservationBentity.ListBean> list;
 
-    private ViewHolder holder;
 
     public ObservationAdapter(Context context, List<ObservationBentity.ListBean> list) {
         this.context = context;
@@ -48,7 +48,8 @@ public class ObservationAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
+        ViewHolder holder;
 
         if (view == null) {
 
@@ -61,7 +62,12 @@ public class ObservationAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
 
         }
-
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Tools.jump(context,list.get(i).getGuid(),list.get(i).getUrl());
+            }
+        });
         Glide.with(context).load(list.get(i).getPicurl()).into(holder.iv_watch_img);
         holder.tv_watch_title.setText(list.get(i).getTitle());
         holder.tv_watch_cont.setText("2017-11-05 09:40");
