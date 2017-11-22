@@ -5,6 +5,7 @@ import com.example.administrator.mypanda.ui.PlayAcitivity;
 import com.example.administrator.mypanda.ui.adapters.HomeRecyclerAdapter;
 import com.example.administrator.mypanda.ui.adapters.ItemcAdapter;
 import com.example.administrator.mypanda.ui.adapters.Itemhadapter;
+import com.example.administrator.mypanda.ui.fragmens.ChildChinaLiveFragment;
 import com.example.administrator.mypanda.ui.fragmens.ChildLiveFragment;
 import com.example.administrator.mypanda.ui.fragmens.ChiledFragment;
 import com.example.administrator.mypanda.ui.fragmens.ChinaLiveFragment;
@@ -48,5 +49,7 @@ public interface UserComponent {
     void inject(ChildLiveFragment childLiveFragment);
 
     void inject(ChinaLiveFragment chinaLiveFragment);
+
+    void inject(ChildChinaLiveFragment childChinaLiveFragment);
 
 }
